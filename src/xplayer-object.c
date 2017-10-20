@@ -3891,10 +3891,14 @@ xplayer_action_handle_scroll (XplayerObject    *xplayer,
 
     switch (direction) {
     case GDK_SCROLL_UP:
-        xplayer_action_seek_relative (xplayer, xplayer->stream_length / 500, FALSE);
+        /* xplayer_action_seek_relative (xplayer, xplayer->stream_length / 500, FALSE);
+	proposed change of default scroll behavior to affect sound volume instead of video position playback */
+	xplayer_action_volume_relative (xplayer, VOLUME_UP_SHORT_OFFSET);
         break;
     case GDK_SCROLL_DOWN:
-        xplayer_action_seek_relative (xplayer, -xplayer->stream_length / 500, FALSE);
+        /* xplayer_action_seek_relative (xplayer, -xplayer->stream_length / 500, FALSE);
+	proposed change of default scroll behavior to affect sound volume instead of video position playback */
+	xplayer_action_volume_relative (xplayer, VOLUME_DOWN_SHORT_OFFSET);
         break;
     default:
         retval = FALSE;
